@@ -67,7 +67,7 @@ public partial class AnimationPlayerMenuMenuButton : MenuButton
                 {//查找AnimName开头的行
                     for (int i = 1; i < param.Length; i++)
                     {
-                        if (string.IsNullOrWhiteSpace(param[i]))
+                        if (!string.IsNullOrWhiteSpace(param[i]))
                         {
                             trackData.AnimNames.Add(param[i]);
                         }
