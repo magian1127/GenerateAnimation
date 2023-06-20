@@ -94,9 +94,12 @@ public partial class AnimationPlayerMenuMenuButton : MenuButton
                                 {
                                     var keyV = param[i].Split(":");
                                     if (keyV.Length > 1 && float.TryParse(keyV[0], out float key))
-                                    {//第一个元素方法名,后面才是参数
-                                        var methodV = new Array<Variant>() { keyV[1], };
-                                        methodV.AddRange(keyV.Skip(1).Select(v => CSVStringToVariant(v)));
+                                    {// 帧时间:方法名:参数1:参数N
+                                        var methodV = new Array<Variant>() { keyV[1] };
+                                        if (keyV.Length > 2)
+                                        {
+                                            methodV.AddRange(keyV.Skip(2).Select(v => CSVStringToVariant(v)));
+                                        }
                                         trackData.Keys.Add(key, methodV);
                                     }
                                 }
@@ -276,7 +279,7 @@ public partial class AnimationPlayerMenuMenuButton : MenuButton
                 anim.ValueTrackSetUpdateMode(idx, trackData.UpdateMode.Value);
             }
 
-            sb.Append($"轨道{trackPath}已设置 ");
+            sb.Append($"轨道 {trackPath} - {trackData.TrackType.ToString()} 已设置 ");
         }
     }
 

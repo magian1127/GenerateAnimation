@@ -3,17 +3,21 @@
 键,第几帧:值(列,0:true,-1:false,-1为最后一帧)
 
 Track,0,AnimationTree:{animName},1
-AnimName
+AnimName,Dodge,Defend,UseSkill,Transform
 Key,-1:false
 
 Track,0,Attack/CollisionShape2D:disabled,1
-AnimName,Attack,Attack2,Attack3
+AnimName,Attack,Attack2,Attack3,AttackSP
 Key,0:false,-1:true
 
-Track,5,.
-AnimName,Death
-Key,-1:queue_free
+Track,0,AnimationTree:Attack,1
+AnimName,Attack,Attack2,Attack3,AttackSP
+Key,-1:false
 
 Track,5,.
+AnimName,Transform
+Key,0:TransformPrepare,-1:TransformReady
+
+/Track,5,.
 AnimName,Test
 Key,-1:emit_signal:"测试信号":true:0
